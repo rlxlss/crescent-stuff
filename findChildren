@@ -1,0 +1,12 @@
+function findChildren(lookThrough, name)
+    warn("---------------")
+    for i, v in ipairs(lookThrough:GetChildren()) do 
+        local NameOfItem = v.Name
+        if string.find(NameOfItem, name)  then
+            warn("Parent: "..v.Parent.Name.." Name: "..v.Name.." Class: "..v.ClassName)
+        else
+            print("Parent: "..v.Parent.Name.." Name: "..v.Name.." Class: "..v.ClassName)
+        end
+    end 
+    warn("---------------")
+end
