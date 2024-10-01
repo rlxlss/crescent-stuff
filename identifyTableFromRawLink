@@ -1,0 +1,12 @@
+-- Raw source link, such as a pastebin link will return all contents of a table.
+-- Please use this way to format them
+-- {'option 1', 'option 2', 'option 3'}
+
+local function identifyTableFromRaw(rawSource)
+    local doof = game:HttpGet(rawSource)
+    local doofwithoutweirdthingies = doof.gsub(doof,"{", "")
+    doofwithoutweirdthingies = doofwithoutweirdthingies.gsub(doofwithoutweirdthingies, "}", "")
+    local beforetableContent = doofwithoutweirdthingies.gsub(doofwithoutweirdthingies, "'", "")
+    local tableContents = string.split(beforetableContent, ", ")
+    return tableContents
+end
