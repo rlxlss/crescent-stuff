@@ -1,0 +1,32 @@
+
+print("d")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local roles
+
+local threats = {
+    murd,
+    sherriff,
+    innocent,
+    hero
+}
+
+local function getRole()
+    roles = ReplicatedStorage:FindFirstChild("GetPlayerData", true):InvokeServer()
+    for i, v in pairs(roles) do 
+        if v.Role == "Murderer" then
+            threats.murd = i
+            warn("Murd: "..i)
+        end
+        if v.Role == "Sherriff" then
+            threats.sherriff = i
+            warn("Sherriff: "..i)
+        end
+        if v.Role == "Hero" then
+            threats.hero = i
+            warn("Hero: "..i)
+        end
+    end
+    return threats
+end
